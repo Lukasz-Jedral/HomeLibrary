@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Domowa biblioteczka</title>
+</head>
+<body>
+    <h2>Edytuj dane:</h2>
+    <form method="POST" action="" enctype=multipart/form-data>
+        {{ form.csrf_token }}
+        {{ form.title.label}}
+        {{ form.title }} <br>
+
+        {{ form.author.label }}
+        {{ form.author }}<br>
+
+        {{ form.genre.label }}
+        {{ form.genre }}<br>
+
+        {{ form.description.label }}
+        {{ form.description }}<br>
+
+        {{ form.published.label }}
+        {{ form.published.year }}<br>
+
+        {{ form.publisher.label }}
+        {{ form.publisher }}<br>
+
+        {{ form.cover.label }}
+        {{ form.cover }}<br>
+        {{ form.submit_field }}
+
+    </form>
+</body>
+</html>

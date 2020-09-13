@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Domowa biblioteczka</title>
+<body>
+    <h2>Książka {{book.title}} została wypożyczona:</h2>
+    <h3>{{borrowed.name}}</h3>
+    {% if borrowed.last_name != None %}
+        <h3>{{borrowed.last_name}}</h3>
+    {% endif %}
+    {% if borrowed.address != None %}
+        <h3>{{borrowed.address}}</h3>
+    {% endif %}
+    <h3>Data wypożycznia:{{borrowed.created}}</h3>
+
+        <form method="Post" action="">
+            <input type="submit" value="Książka została zwrócona" >
+        </form>
+
+        <form method="Get" action="/home_library/book/{{book.id}}">
+            <input type="submit"  value="Powrót" >
+        </form>
+
+</body>
+</html>

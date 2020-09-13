@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Domowa biblioteczka</title>
+</head>
+<body>
+    <h1>Domowa biblioteka zawiera następujące pozycje:</h1>
+    <h2>Kliknj na pozycję aby wyświetlić szczegóły lub dokonać edycji</h2>
+
+    <ol>
+        {%for book in books%}
+        <li><a href="/home_library/book/{{ book.id }}">{{ book['title'] }}</a></li>
+        {% endfor %}
+    </ol>
+
+    <form method="Post" action="/home_library/main">
+        <input type="submit" value="Porót do strony głównej">
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Domowa biblioteczka</title>
+</head>
+<body>
+    <h2> Zamierzasz wyporzyczyć książkę {{book.title}}</h2>
+    <h3> Wypełnij dane abyś wiedział gdzie się podziewa {{book.title}}</h3>
+    <form method="POST" action="" >
+        {{ form.csrf_token }}
+
+        {{ form.name.label}}
+        {{ form.name }}<br>
+
+        {{ form.last_name.label}}
+        {{ form.last_name }}<br>
+
+        {{ form.address.label}}
+        {{ form.address }}<br>
+
+        {{ form.submit_field }}
+    </form>
+    <form method="Get" action="/home_library/book/{{book.id}}">
+            <input type="submit"  value="Powrót" >
+    </form>
+</body>
+</html>

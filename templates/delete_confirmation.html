@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Domowa biblioteczka</title>
+</head>
+<body>
+    <h2> Zamierzasz usunąć z domowej biblioteki książkę: {{book.title}}</h2>
+    <h2> Czy na pewno chcesz to zrobić</h2>
+    <div style="width:400px;">
+    <div style="float: left; width: 130px">
+        <form id="thisone" action="/home_library/book_delete/{{book.id}}" method="post">
+            <input type="submit" name = "" value="Tak" >
+        </form>
+    </div>
+    <div style="float: right; width: 225px">
+        <form id="thistoo" action="/home_library/book/{{book.id}}" method="get">
+            <input type="submit" name = "" value="Nie" >
+        </form>
+    </div>
+</div>
+</body>
+</html>

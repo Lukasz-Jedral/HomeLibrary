@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Domowa biblioteczka</title>
+</head>
+<body>
+    <h1>Tytuł: {{book['title']}}</h1>
+    <img src="{{ book['cover_url'] }}" alt="{{ book['title'] }}" align="right"  >
+    <h2>Autor: {{book['author']}}</h2>
+    <h2>Gatunek: {{genre.name}}</h2>
+    <h2>Opis: {{book['description']}}</h2>
+    <h2>Rok wydania: {{book.published.year}}</h2>
+    <h2>Wydawca: {{book['publisher']}}</h2>
+    {% if book.borrowed_id == None %}
+    <h2>Na półce: Tak</h2>
+    <form method = 'GET' action="/home_library/borrow/{{book_id}}">
+        <input type = submit value="Wypożycz książkę">
+    </form>
+    {% else %}
+    <h2>Na półce: Nie</h2>
+    <form method = 'GET' action="/home_library/borrow_status/{{book_id}}">
+        <input type = submit value="Książka wypożyczona: Szczegóły">
+    </form>
+    {% endif %}
+
+    <form method = 'GET' action="/home_library/book_update/{{book_id}}">
+        <input type = submit value="Edycja">
+    </form>
+
+     <form method = 'GET' action="/home_library/book_delete/{{book_id}}">
+        <input type = submit value="Usuń">
+    </form>
+
+    <form method = 'POST' action="/home_library/full_list">
+        <input type = submit value="Porót">
+    </form>
+</body>
+</html>

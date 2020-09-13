@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Domowa biblioteczka</title>
+</head>
+<body>
+
+    <h1>Witaj w domowej bibliotece</h1>
+    <h2>Co zamierzasz zrobić?:</h2>
+    <form method="post">
+        {{ form.csrf_token }}
+        {{ form.radio_field }}
+        {{ form.submit_field }}
+    </form>
+
+</body>
+</html>

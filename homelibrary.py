@@ -57,23 +57,42 @@ def book_details(book_id):
 def book_update(book_id):
     if request.method == "GET":
         book = Books.query.get(book_id)
-        form = UpdateBookForm(data = book)
+        feed_the_form = {'id': book.id,
+                         'title': book.title,
+                         'author': book.author,
+                         'description': book.description,
+                         'published': book.published.year,
+                         'publisher': book.publisher,
+                         'cover': book.cover_url,
+                         'borrowed_id': book.borrowed_id}
+        form = UpdateBookForm(data = feed_the_form)
         return render_template('book_update.html',
                                form=form)
     elif request.method == "POST":
-        form = AddNewBookForm()
+        form = UpdateBookForm()
         if form.validate_on_submit():
             temp_dict = request.form.to_dict()
-            book = Books(title=temp_dict['title'],
+            '''book = Books(title=temp_dict['title'],
                          author=temp_dict['author'],
                          genre_id=temp_dict['genre'],
                          description=temp_dict['description'],
                          published=datetime(int(temp_dict['published']), 1, 1),
                          publisher=temp_dict['publisher'],
-                         cover_url=temp_dict['cover']
-                         )
-            db.session.update(book)
+                         cover_url=temp_dict['cover'],
+                         borrowed_id=temp_dict['borrowed_id']
+                         )'''
+
+            book_update = db.session.query(Books).get(book_id)
+            book_update.title = temp_dict['title']
+            book_update.author = temp_dict['author']
+            book_update.genre_id = int(temp_dict['genre'])
+            book_update.description = temp_dict['description'],
+            book_update.published = datetime(int(temp_dict['published']), 1, 1)
+            book_update.publisher = temp_dict['publisher']
+            book_update.cover_url = temp_dict['cover']
+            book_update.borrowed_id = (temp_dict['borrowed_id'])
             db.session.commit()
+
             return render_template('upload_succesful.html')
 
 

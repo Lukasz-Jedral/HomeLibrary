@@ -6,8 +6,11 @@
 </head>
 <body>
     <h2>Edytuj dane:</h2>
-    <form method="POST" action="" enctype=multipart/form-data>
+    <form method="POST" action="" >
         {{ form.csrf_token }}
+
+        {{ form.id }}
+
         {{ form.title.label}}
         {{ form.title }} <br>
 
@@ -21,13 +24,16 @@
         {{ form.description }}<br>
 
         {{ form.published.label }}
-        {{ form.published.year }}<br>
+        {{ form.published }}<br>
 
         {{ form.publisher.label }}
         {{ form.publisher }}<br>
 
         {{ form.cover.label }}
         {{ form.cover }}<br>
+
+        {{ form.borrowed_id }}
+
         {{ form.submit_field }}
 
     </form>

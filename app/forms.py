@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import RadioField, SubmitField, StringField, IntegerField, SelectField
+from wtforms import RadioField, SubmitField, StringField, IntegerField, HiddenField
 from wtforms.validators import DataRequired
 from wtforms_sqlalchemy.fields import QuerySelectField
 from app.models import Genres
@@ -44,11 +44,13 @@ class AddNewPublisherForm(FlaskForm):
     submit_field = SubmitField("Dodaj wydawnictwo do biblioteki")
 
 class UpdateBookForm(FlaskForm):
+    id = HiddenField('Id', validators=[DataRequired()])
     title = StringField('Tytuł:', validators=[DataRequired()])
     author = StringField('Autor:', validators=[DataRequired()])
     description = StringField('Opis:', validators=[DataRequired()])
     published = IntegerField('Rok wydania:', validators=[DataRequired()])
     publisher = StringField('Wydawca:', validators=[DataRequired()])
     cover = StringField('URL Okładki:', validators=[DataRequired()])
-    #genre = QuerySelectField('Gatunek:', query_factory=choice_query, allow_blank=False, get_label='name')
+    genre = QuerySelectField('Gatunek:', query_factory=choice_query, allow_blank=False, get_label='name')
+    borrowed_id = HiddenField('Borrowed_id:')
     submit_field = SubmitField("Dodaj do biblioteki")
